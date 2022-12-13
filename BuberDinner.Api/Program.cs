@@ -15,6 +15,8 @@ var app = builder.Build();
 {
     //app.UseMiddleware<ErrorHandlingMiddleware>();
     app.UseExceptionHandler("/error");
+    app.UseAuthentication();
+    app.UseAuthorization();
     app.UseHttpsRedirection();
     app.MapControllers();
     app.Run();
