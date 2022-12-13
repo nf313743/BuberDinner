@@ -24,6 +24,11 @@ public class AuthenticationController : ApiController
     [HttpPost("register")]
     public async Task<IActionResult> Register(RegisterRequest request)
     {
+        return await ValidationProblem(request);
+    }
+
+    private async Task<IActionResult> ValidationProblem(RegisterRequest request)
+    {
         var command = _mapper.Map<RegisterCommand>(request);
         var registerResult = await _mediator.Send(command);
 
